@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "95bb8e32-0215-492d-85fe-c4d4c5a0f634",
+		"name": "notice_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"XD\",\r\n    \"info\": \"LOL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/note/add",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"note",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "note/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/note/1",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"note",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "note",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/note/edit",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"note",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "note/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/note/2",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"note",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/notes",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:9090"
+		}
+	]
+}
