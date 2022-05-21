@@ -8,6 +8,7 @@ function App() {
 
   const inputTitle = useRef(null);
   const inputInfo = useRef(null);
+  const inputData = "2022-04-16T00:00:00";
 
   useEffect(() => {
     axios.get(
@@ -33,6 +34,31 @@ function App() {
     });
   }
 
+  const DelNote = (id) => {
+    axios.delete(`http://localhost:9090/api/note/${id}`,
+    {
+      withCredentials: false
+    }
+    ).then(() => {
+      setIsUpdate(!isUpdate);
+    });
+  }
+
+  const editNote = () => {
+    axios.put(`http://localhost:9090/api/note/edit/`,
+    {
+      title: inputTitle.current.value,
+      info: inputInfo.current.value,
+      created_at: inputData,
+    },
+    {
+      withCredentials: false
+    }
+    ).then(() => {
+      setIsUpdate(!isUpdate);
+    });
+  }
+
   return (
     <div className="App">
 
@@ -43,7 +69,10 @@ function App() {
       <button onClick={() => addNote()}>Добавить</button>
 
     {!!notes && notes.map((note, index) => (
-      <div key={'note_' + index}>{note.title}</div>
+      <div key={'note_' + index}>{note.title}
+      <button onClick={() => DelNote(note.id)}>Удалить</button>
+      <button onClick={() => editNote(note.id)}>Изменить</button>
+      </div>
     ))}
 
     </div>
