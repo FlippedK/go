@@ -44,12 +44,13 @@ function App() {
     });
   }
 
-  const editNote = () => {
-    axios.put(`http://localhost:9090/api/note/edit/`,
+  const editNote = (id) => {
+    axios.put(`http://localhost:9090/api/note/edit`,
     {
+      id: id,
+      created_at: inputData,
       title: inputTitle.current.value,
       info: inputInfo.current.value,
-      created_at: inputData,
     },
     {
       withCredentials: false
@@ -61,20 +62,34 @@ function App() {
 
   return (
     <div className="App">
-
-      <label>Заголовок</label>
-      <input ref={inputTitle} type="text"/>
-      <label>Описание</label>
-      <input ref={inputInfo} type="text"/>
-      <button onClick={() => addNote()}>Добавить</button>
-
+      <div className="Box">
+        <div className="Box__up">
+          <div className="Zagolov">
+            <label>Заголовок</label>
+            <input ref={inputTitle} type="text"/>
+          </div>
+          <div className="Opisan">
+            <label>Описание</label>
+            <input ref={inputInfo} type="text"/>
+          </div>
+          <button onClick={() => addNote()}>Добавить</button>
+        </div>
+      <div className="Zametki">
     {!!notes && notes.map((note, index) => (
-      <div key={'note_' + index}>{note.title}
-      <button onClick={() => DelNote(note.id)}>Удалить</button>
-      <button onClick={() => editNote(note.id)}>Изменить</button>
+      <div key={'note_' + index}>
+      <div className="Zametka">
+        <a className="block">{note.title}</a>
+        <br/>
+        {note.info}
+      </div>
+      <div className="Buttons">
+        <button onClick={() => DelNote(note.id)}>Удалить</button>
+        <button onClick={() => editNote(note.id)}>Изменить</button>
+      </div>
       </div>
     ))}
-
+      </div>
+      </div>
     </div>
   );
 }
